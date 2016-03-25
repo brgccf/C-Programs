@@ -1,0 +1,14 @@
+Mapa Lido:
+#####
+#S.##
+#..T#
+#####
+=====Procurando S...======
+S está na posicao: (1, 1)
+T esta na posicao: (2, 3)
+==== MAPA FINAL ======
+#####
+#S.##
+#..T#
+#####
+
