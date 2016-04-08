@@ -1,5 +1,7 @@
-Case 1: 1
-Case 2: 0
-Case 3: 76
-Case 4: 374
-Case 5: 1
+Case 1: ENGLISH
+Case 2: SPANISH
+Case 3: GERMAN
+Case 4: FRENCH
+Case 5: ITALIAN
+Case 6: RUSSIAN
+Case 7: UNKNOWN
