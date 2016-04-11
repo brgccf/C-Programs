@@ -1,0 +1,9 @@
+Left Right Father Element ; Z --> ++z a cada elemento. Z indica o número de elementos e a posição do array que o prox elemento será adicionado 
+
+Left: indica a posição do filho a esquerda de dado elemento
+Right: indica a posição do filho a direita de dado elemento
+Father: indica a posição do pai de dado elemento
+
+exemplo de construção de arvore com array de 4 dim:
+no início--> -1 -1 -1 -1
+primeiro elemento(ex 3) --> -1 -1 -1 3
