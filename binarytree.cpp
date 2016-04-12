@@ -8,6 +8,7 @@ typedef struct son
 }son;
 son *root = NULL;
 
+
 void insert(int k)
 {
 	printf("===ENTROU EM INSERT===\n");
@@ -72,20 +73,19 @@ son* tree_minimum(son *sub_root)
 	else return tree_minimum(sub_root->left)
 }
 
-son* tree_sucessor(son* sub_root)
-{
-	if (sub_root->right)
-	{
-		return tree_minimum(sub_root->right);
-	}
-	son* temp = sub_root; //p[x]
-	// while(temp && sub_root = temp->right)
-	// {
-	// 	sub_root = temp;
-	// 	temp = 
-	// }
-
-}
+// son* tree_sucessor(son* sub_root)
+// {
+// 	if (sub_root->right)
+// 	{
+// 		return tree_minimum(sub_root->right);
+// 	}
+// 	son* temp = sub_root; //p[x]
+// 	while(temp && sub_root == temp->right)
+// 	{
+// 		sub_root = temp;
+// 		temp = 
+// 	}
+// }
 
 void remove_key(int k, son *sub_root)
 {
