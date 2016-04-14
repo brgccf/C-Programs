@@ -1,0 +1,13 @@
+Se você for usuário Windows, tem 2 opções. Muita gente gosta de usar IDE (Integrated Development Environment), que é basicamente uma ferramenta com vários utilitários integrados para você desenvolver em uma certa tecnologia. Um dos exemplos mais famosos é o Devcpp e o Codeblocks. Sugiro fortemente o codeblocks. Você pode baixá-lo aqui: http://www.codeblocks.org/downloads
+
+Agora, eu não sou tão fã assim de IDE. Pra mim, pelo menos em questões de maratona de programação, atrapalha um pouco, até porque pode travar e tudo mais. Então tem um truquezinho que eu faço.
+Abra o prompt de comando e digite:
+set path=c:/codeblocks/bin/mingw (eu não tenho certeza se esse é o path correto no PC de vocês, confirmem aí, mas eu sei que termina com algo como /bin/mingw)
+Agora, vocês vão poder usar livremente o g++ na linha de comando para compilar C++. A diferença é que pra rodar, não precisa do ./ no começo.
+
+Tá, mas o que foi isso que eu fiz?
+Eu apenas adicionei esse path como sendo um dos lugares que o Windows vai procurar na hora que você chamar algum programa pela linha de comando. Como g++ está dentro de bin/mingw, ele conseguirá achar lá.
+
+O problema é que se você fizer desse jeito, toda vez que você abrir o shell, precisará fazer o set path novamente. Então um jeito de tratar isso é ir em Meu Computador -> Propriedades -> Configurações Avançadas do Sistema -> Environment Variables
+
+Vai abrir uma telinha com algumas variáveis associadas a alguns valores. Ache a variável "Path" e, ao final dela, coloque um ; e adicione esse mesmo caminho que você usou o set path
