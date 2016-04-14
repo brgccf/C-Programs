@@ -11,3 +11,7 @@ Eu apenas adicionei esse path como sendo um dos lugares que o Windows vai procur
 O problema é que se você fizer desse jeito, toda vez que você abrir o shell, precisará fazer o set path novamente. Então um jeito de tratar isso é ir em Meu Computador -> Propriedades -> Configurações Avançadas do Sistema -> Environment Variables
 
 Vai abrir uma telinha com algumas variáveis associadas a alguns valores. Ache a variável "Path" e, ao final dela, coloque um ; e adicione esse mesmo caminho que você usou o set path
+
+WINDOWS:
+para compilar: g++ nome_do_programa.c -o nome_do_executavel.exe
+para executar: nome_do_executavel
