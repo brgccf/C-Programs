@@ -13,14 +13,15 @@ i é o indice do nó raiz da sub-árvore considerada*/
 	int greater, temp;
 	while(i <= n/2)
 	{
-		if(i < n/2)
+		if(i < (float)n/2)
 		{
 			if(heap[2*i] > heap[(2*i)+1]) greater = 2*i;
 			else greater = (2*i)+1;
 		}
-		else greater = 2*i;
+		else greater = (2*i);
 		if (heap[i] < heap[greater])
 		{
+			printf("greater == %d\n", greater);
 			temp = heap[i];
 			heap[i] = heap[greater];
 			heap[greater] = temp;
@@ -30,12 +31,51 @@ i é o indice do nó raiz da sub-árvore considerada*/
 	}
 }
 
-void build_max_heap(int index, int key)
+void max_heapify_rec(int i)
 {
+
+}
+
+void build_max_heap(int index, int key)
+{ 
 	heap[index] = key;
 	for (int i = index/2; i > 0; i/=2)
 	{
 		max_heapify(index, i);
+	}
+
+}
+
+void min_heapify(int n, int i)
+{
+	printf("===MIN HEAPIFY===\n");
+	printf("n == %d\ni == %d", n, i);
+	int smaller, temp;
+	while(i <= n/2)
+	{
+		if (i < n/2)
+		{
+			if(heap[i*2] < heap[(2*i)+1]) smaller = 2*i;
+			else smaller = (2*i)+1;
+		}
+		else smaller = 2*i;
+		if (heap[i] > heap[smaller])
+		{
+			temp = heap[i];
+			heap[i] = heap[smaller];
+			heap[smaller] = temp;
+			i = smaller;
+		}
+		else i = n;
+	}
+}
+
+void build_min_heap(int index, int key)
+{
+	heap[index] = key;
+	for (int i = index/2; i > 0; i/=2)
+	{
+		min_heapify(index, i);
 	}
 }
 
@@ -69,6 +109,15 @@ int main(int argc, char const *argv[])
 	//max_heapify(heap, 11, 10);
 	printf("FINISH:\n");
 	print_heap(11);
+
+	// int ch;
+	// printf("Print min_heap?\n");
+	// scanf("%d", &ch);
+	// if(ch == 1)
+	// {
+	// 	build_min_heap(5, key);
+	// 	print_heap(11);
+	// }
 	
 	return 0;
 }
