@@ -1,7 +1,7 @@
 #include "bits/stdc++.h"
 using namespace std;
 
-vector<int> heap(11); //capacidade de 20 elementos
+vector<int> heap(11); //capacidade de 10 elementos
 
 void max_heapify(int n, int i) 
 /*A é o array contendo os elementos
@@ -13,7 +13,7 @@ i é o indice do nó raiz da sub-árvore considerada*/
 	int greater, temp;
 	while(i <= n/2)
 	{
-		if(i < (float)n/2)
+		if(i < (n+1)/2)
 		{
 			if(heap[2*i] > heap[(2*i)+1]) greater = 2*i;
 			else greater = (2*i)+1;
@@ -31,15 +31,9 @@ i é o indice do nó raiz da sub-árvore considerada*/
 	}
 }
 
-void max_heapify_rec(int i)
-{
-
-}
-
-void build_max_heap(int index, int key)
+void build_max_heap(int index)
 { 
-	heap[index] = key;
-	for (int i = index/2; i > 0; i/=2)
+	for (int i = index/2; i > 0; i--)
 	{
 		max_heapify(index, i);
 	}
@@ -49,11 +43,11 @@ void build_max_heap(int index, int key)
 void min_heapify(int n, int i)
 {
 	printf("===MIN HEAPIFY===\n");
-	printf("n == %d\ni == %d", n, i);
+	printf("n == %d\ni == %d\n", n, i);
 	int smaller, temp;
 	while(i <= n/2)
 	{
-		if (i < n/2)
+		if (i < (n+1)/2)
 		{
 			if(heap[i*2] < heap[(2*i)+1]) smaller = 2*i;
 			else smaller = (2*i)+1;
@@ -70,10 +64,10 @@ void min_heapify(int n, int i)
 	}
 }
 
-void build_min_heap(int index, int key)
+inline void build_min_heap(int index)
 {
-	heap[index] = key;
-	for (int i = index/2; i > 0; i/=2)
+	//heap[index] = key;
+	for (int i = index/2; i > 0; i--)
 	{
 		min_heapify(index, i);
 	}
@@ -99,12 +93,12 @@ int main(int argc, char const *argv[])
 	print_heap(11);
 	for (int i = 1; i < 11; ++i)
 	{
-		//heap[i] = rand() % 100;
 		key = rand() % 100;
 		printf("KEY = %d\n", key);
-		build_max_heap(i, key);
+		heap[i] = key;
 		print_heap(11);
 	}
+	build_min_heap(10);
 	//print_heap(heap, 11);
 	//max_heapify(heap, 11, 10);
 	printf("FINISH:\n");
