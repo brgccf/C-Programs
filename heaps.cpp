@@ -84,6 +84,38 @@ void print_heap(int n)
 	printf("\n");
 }
 
+void max_heapsort(int n)
+{
+	build_max_heap(n);
+	int temp;
+	print_heap(n);
+	printf("===MAX_HEAPSORT===\n");
+	for (int i = n; i > 1; i--)
+	{
+		temp = heap[i];
+		heap[i] = heap[1];
+		heap[1] = temp;
+		--n;
+		max_heapify(n, 1);
+	}
+}
+
+void min_heapsort(int n)
+{
+	build_min_heap(n);
+	int temp;
+	print_heap(n);
+	printf("===MIN_HEAPSORT===\n");
+	for (int i = n; i > 1; i--)
+	{
+		temp = heap[i];
+		heap[i] = heap[1];
+		heap[1] = temp;
+		--n;
+		min_heapify(n, 1);
+	}
+}
+
 int main(int argc, char const *argv[])
 {
 	srand(time(NULL));
@@ -98,20 +130,11 @@ int main(int argc, char const *argv[])
 		heap[i] = key;
 		print_heap(11);
 	}
-	build_min_heap(10);
-	//print_heap(heap, 11);
-	//max_heapify(heap, 11, 10);
-	printf("FINISH:\n");
+	// build_min_heap(10);
+	// printf("FINISH:\n");
+	// print_heap(11);
+	min_heapsort(11);
 	print_heap(11);
-
-	// int ch;
-	// printf("Print min_heap?\n");
-	// scanf("%d", &ch);
-	// if(ch == 1)
-	// {
-	// 	build_min_heap(5, key);
-	// 	print_heap(11);
-	// }
 	
 	return 0;
 }
