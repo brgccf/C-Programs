@@ -3,6 +3,17 @@ using namespace std;
 
 vector<int> heap(11); //capacidade de 10 elementos
 
+void print_heap(int n)
+{
+	printf("Actual heap:\n");
+	for (int i = 1; i < n; ++i)
+	{
+		printf("%d", heap[i]);
+		printf(" ");
+	}
+	printf("\n");
+}
+
 void max_heapify(int n, int i) 
 /*A é o array contendo os elementos
 n é o número de elementos no array
@@ -47,12 +58,14 @@ void min_heapify(int n, int i)
 	int smaller, temp;
 	while(i <= n/2)
 	{
+		print_heap(n);
 		if (i < (n+1)/2)
 		{
 			if(heap[i*2] < heap[(2*i)+1]) smaller = 2*i;
 			else smaller = (2*i)+1;
 		}
 		else smaller = 2*i;
+		printf("smaller == %d\n", smaller);
 		if (heap[i] > heap[smaller])
 		{
 			temp = heap[i];
@@ -71,17 +84,6 @@ inline void build_min_heap(int index)
 	{
 		min_heapify(index, i);
 	}
-}
-
-void print_heap(int n)
-{
-	printf("Actual heap:\n");
-	for (int i = 1; i < n; ++i)
-	{
-		printf("%d", heap[i]);
-		printf(" ");
-	}
-	printf("\n");
 }
 
 void max_heapsort(int n)
