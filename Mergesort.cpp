@@ -38,8 +38,8 @@ void processa() {
 }
 
 int main() {
-	freopen ("problema1.in","r",stdin);
- 	freopen ("problema1.out","w",stdout);
+	// freopen ("problema1.in","r",stdin);
+ // 	freopen ("problema1.out","w",stdout);
 	while(ler_dados()) processa();
 	return 0;
 }

@@ -41,16 +41,16 @@ void processa() {
 }
 
 int main() {
-	freopen ("in.txt","r",stdin);
- 	freopen ("out.txt","w",stdout);
+	// freopen ("in.txt","r",stdin);
+ // 	freopen ("out.txt","w",stdout);
 	srand(time(NULL));
 	//while(ler_dados()) processa();
 	
 	/*Apenas testando com numeros repetidos*/
 	int i;
-	n = 1000000;
-	//for(i = 0; i < n; i++) a[i] = rand();
-	for(i = 0; i < n; i++) a[i] = 1;
+	n = 100;
+	for(i = 0; i < n; i++) a[i] = rand();
+	//for(i = 0; i < n; i++) a[i] = 1;
 	processa();
 	
 	return 0;

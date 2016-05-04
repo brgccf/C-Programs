@@ -3,38 +3,14 @@
 
 unsigned int n;
 unsigned int A[12] = {1, 3, 5, 6, 9, 10, 13, 16, 19, 21, 24, 34};
-unsigned int existe = 1;
 
-void search()
+int search(int ini, int fim, int x)
 {
-	int inicio = 0, fim = 11;
-	int index = 11/2;
-	while(n != A[index])
-	{
-		if(n > A[index]) 
-		{
-			inicio = index+1;
-			index = (int)((fim+inicio)/2);
-		}
-		else if(n < A[index])
-		{
-			fim = index;
-			index = (int)(inicio+fim)/2;
-		}
-		if (inicio == fim)
-		{
-			printf("Nao existe!\n");
-			existe = 0;
-			break;
-		}
-		
-	} 
-	if(existe)
-	{
-		printf("Resultado: %d\n", index);
-	}
-	existe = 1;
-	
+	int mid = (ini + fim)/2;
+	if(x == A[mid]) return mid;
+	else if (ini >= fim) return -1;
+	else if(x > A[mid]) search(mid+1, fim, x);
+	else search(ini, mid-1, x);
 }
 
 int ler_dados()
@@ -48,7 +24,9 @@ int main()
 	int result;
 	while(ler_dados())
 	{
-		search();
+		result = search(0, 11, n);
+		if(result == -1) printf("Elemento nao existe!\n");
+		else printf("elemento encontrado na posicao %d\n", result);
 	}
 		
 	return 0;
