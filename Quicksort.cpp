@@ -6,7 +6,7 @@
   Ordenar o array dado eficientemente
 */
 
-int n, a[100];
+int n, a[1000000];
 
 int ler_dados() {
 	if(scanf("%d",&n) != 1) return 0;
@@ -33,13 +33,27 @@ int ler_dados() {
 // 	quicksort(k+1,r);
 // }
 
-
-
 int particiona(int left, int right)
 {
-	int i = left, j = right, p = left + rand()%(right-1);
-	PERM(a[p], a[left]);
+	int i = left, j = right, p = a[left];
+	while(i <= j)
+	{
+		while(a[i] <= p) ++i;
+		while(a[j] > p) --j;
+		if(i < j) PERM(a[i], a[j]);
+	} 
+	PERM(a[left], a[j]);
+	return j;
+}
 
+void quicksort(int left, int right)
+{
+	if(left < right)
+	{
+		int split = particiona(left, right);
+		quicksort(left, split-1);
+		quicksort(split+1, right);
+	}
 }
 
 void processa() {
@@ -58,7 +72,7 @@ int main() {
 	/*Apenas testando com numeros repetidos*/
 	int i;
 	n = 100;
-	for(i = 0; i < n; i++) a[i] = rand();
+	for(i = 0; i < n; i++) a[i] = rand()%1000;
 	//for(i = 0; i < n; i++) a[i] = 1;
 	processa();
 	
