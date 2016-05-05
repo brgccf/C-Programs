@@ -6,7 +6,7 @@
   Ordenar o array dado eficientemente
 */
 
-int n, a[1000000];
+int n, a[100];
 
 int ler_dados() {
 	if(scanf("%d",&n) != 1) return 0;
@@ -16,21 +16,30 @@ int ler_dados() {
 
 // Como ajeitar para ficar eficiente mesmo quando
 // o array for cheio de elementos repetidos?
-void quicksort(int l, int r)
+// void quicksort(int l, int r)
+// {
+// 	if(l+1 >= r) return;
+// 	int p = l + rand()%(r-l);
+// 	PERM(a[p],a[r-1]);
+// 	int i, k;
+// 	for(i=k=l;i<r-1;i++) {
+// 		if(a[i] < a[r-1]) {
+// 			PERM(a[i],a[k]);
+// 			k++;
+// 		}
+// 	}
+// 	PERM(a[r-1], a[k]);
+// 	quicksort(l,k);
+// 	quicksort(k+1,r);
+// }
+
+
+
+int particiona(int left, int right)
 {
-	if(l+1 >= r) return;
-	int p = l + rand()%(r-l);
-	PERM(a[p],a[r-1]);
-	int i, k;
-	for(i=k=l;i<r-1;i++) {
-		if(a[i] < a[r-1]) {
-			PERM(a[i],a[k]);
-			k++;
-		}
-	}
-	PERM(a[r-1], a[k]);
-	quicksort(l,k);
-	quicksort(k+1,r);
+	int i = left, j = right, p = left + rand()%(right-1);
+	PERM(a[p], a[left]);
+
 }
 
 void processa() {
@@ -42,7 +51,7 @@ void processa() {
 
 int main() {
 	// freopen ("in.txt","r",stdin);
- // 	freopen ("out.txt","w",stdout);
+	freopen ("out.txt","w",stdout);
 	srand(time(NULL));
 	//while(ler_dados()) processa();
 	
