@@ -6,7 +6,7 @@ vector<int> heap(11); //capacidade de 10 elementos
 void print_heap(int n)
 {
 	printf("Actual heap:\n");
-	for (int i = 1; i < n; ++i)
+	for (int i = 1; i <= n; ++i)
 	{
 		printf("%d", heap[i]);
 		printf(" ");
@@ -58,7 +58,7 @@ void min_heapify(int n, int i)
 	int smaller, temp;
 	while(i <= n/2)
 	{
-		print_heap(n);
+		print_heap(10);
 		if (i < (n+1)/2)
 		{
 			if(heap[i*2] < heap[(2*i)+1]) smaller = 2*i;
@@ -90,7 +90,7 @@ void max_heapsort(int n)
 {
 	build_max_heap(n);
 	int temp;
-	print_heap(n);
+	print_heap(10);
 	printf("===MAX_HEAPSORT===\n");
 	for (int i = n; i > 1; i--)
 	{
@@ -106,7 +106,7 @@ void min_heapsort(int n)
 {
 	build_min_heap(n);
 	int temp;
-	print_heap(n);
+	print_heap(10);
 	printf("===MIN_HEAPSORT===\n");
 	for (int i = n; i > 1; i--)
 	{
@@ -124,19 +124,19 @@ int main(int argc, char const *argv[])
 	//vector<int> heap(11); //capacidade de 20 elementos
 	heap[0] = -1;
 	int key;
-	print_heap(11);
+	print_heap(10);
 	for (int i = 1; i < 11; ++i)
 	{
 		key = rand() % 100;
 		printf("KEY = %d\n", key);
 		heap[i] = key;
-		print_heap(11);
+		print_heap(10);
 	}
 	// build_min_heap(10);
 	// printf("FINISH:\n");
 	// print_heap(11);
-	min_heapsort(11);
-	print_heap(11);
+	min_heapsort(10);
+	print_heap(10);
 	
 	return 0;
 }

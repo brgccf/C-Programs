@@ -51,55 +51,69 @@ void insert(int k)
 	}
 }
 
-son* tree_search(son *sub_root, k)
-{
-	if (!sub_root || k == sub_root->key)
-	{
-		return sub_root;
-	}
-	if (k < sub_root->key)
-	{
-		return tree_search(sub_root->left, k);
-	}
-	else return tree_search(sub_root->right, k);
-}
-
-son* tree_minimum(son *sub_root)
-{
-	if(!sub_root->left)
-	{
-		return sub_root;
-	}
-	else return tree_minimum(sub_root->left)
-}
-
-// son* tree_sucessor(son* sub_root)
-// {
-// 	if (sub_root->right)
-// 	{
-// 		return tree_minimum(sub_root->right);
-// 	}
-// 	son* temp = sub_root; //p[x]
-// 	while(temp && sub_root == temp->right)
-// 	{
-// 		sub_root = temp;
-// 		temp = 
-// 	}
-// }
-
 void remove_key(int k, son *sub_root)
 {
-	if(!root) printf("No elements left!\n");
+	son *node = sub_root;
+	son *parent = NULL;
+	while(node != NULL && node->key != k)
+	{
+		parent = node;
+		if(k < node->key) node = node->left;
+		else node = node->right;
+	}
+	if(node == NULL) 
+	{
+		printf("the key %d is NOT in the tree!\n", k);
+		return;
+	}
+	if(node != root)
+	{
+		if(node->left == NULL) //possui um filho a direita
+		{
+			if(k <= parent->key) parent->left = node->right;
+			else parent->right = node->right;
+			printf("Value %d Removed from the tree!\n", node->key);
+			delete(node);
+		}
+		else if (node->right == NULL) //possui um filho a esquerda
+		{
+			if(k <= parent->key) parent->left = node->left;
+			else parent->right = node->left;
+			printf("Value %d removed from the tree!\n", node->key);
+			delete(node);
+		}
+		else //caso tenha dois filhos
+		{
+			printf("It's a node with 2 childs!\n");
+			son *node1 = node->left;
+			son *parent1 = node;
+			//pegando o filho com maior key antes do nó com dois filhos
+			while(node1->right != NULL)
+			{
+				parent1 = node1;
+				node1 = node1->right;
+			}
+			//apos o while podemos deletar
+			parent1->right = node1->left;
+			printf("Removed %d from the tree!\n", node->key);
+			node->key = node1->key;
+			printf("value %d replaced in the node!\n", node->key);
+			delete(node1);
+		}
+	}
+
 	
 }
 
 void print_tree(son *sub_root)
 {
+
 	if (sub_root)
 	{
 		print_tree(sub_root->left);
-		printf("%d \n", sub_root->key);
+		
 		print_tree(sub_root->right);
+		printf("%d ", sub_root->key);
 	}
 }
 
