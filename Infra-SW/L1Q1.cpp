@@ -51,12 +51,24 @@ Custo de consertar as flechas de tipo 1: R$ 6,00
 Custo de consertar as flechas de tipo 2: R$ 0,00
 */
 #include <bits/stdc++.h>
+#include <pthread.h>
 using namespace std;
 
 vector<int> P;
 vector<int> custo_ruim;
 int contador_bom;
 
+pthread_mutex_t mutex_lock;
+
+void *calcula_custo_bom(*void param)
+{
+
+}
+
+void *calcula_custo_ruim(*void param)
+{
+	
+}
 
 int main()
 {
