@@ -1,14 +1,13 @@
 #include "bits/stdc++.h"
-
 using namespace std;
-vector< vector<int> > vec(1); //lista de adjacencia
-
 typedef struct node
 {
 	int key;
 	bool visited;
 	node *next;
 }node;
+
+vector< vector<node> > vec(1); //lista de adjacencia
 
 void DFS(int v)
 {
