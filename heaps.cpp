@@ -40,6 +40,7 @@ i é o indice do nó raiz da sub-árvore considerada*/
 		}
 		else i = n;
 	}
+	print_heap(10);
 }
 
 void build_max_heap(int index)
@@ -135,7 +136,7 @@ int main(int argc, char const *argv[])
 	// build_min_heap(10);
 	// printf("FINISH:\n");
 	// print_heap(11);
-	min_heapsort(10);
+	max_heapsort(10);
 	print_heap(10);
 	
 	return 0;

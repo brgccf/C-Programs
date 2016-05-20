@@ -1,13 +1,13 @@
 #include "bits/stdc++.h"
 using namespace std;
+
 typedef struct node
 {
 	int key;
 	bool visited;
-	node *next;
 }node;
 
-vector< vector<node> > vec; //lista de adjacencia
+vector< vector<int> > vec; //lista de adjacencia
 
 void DFS(int v)
 {
@@ -17,19 +17,24 @@ void DFS(int v)
 int main(int argc, char const *argv[])
 {
 	printf("Digite a quantidade de valores\n");
-	int n, limit;
+	int n;
 	scanf("%d", &n);
-	limit = n;
-	--n;
-	vec.resize(n, vector<node>( //num_of_row, int value));
-	//criando vetor completo
-	for (n; n > 0; --n)
-	{
-		vec[0][n] = n;
-		printf("valor lido em vec[%d]: %d\n", n, vec[n]);
+	vec.resize(n);
+
+	for(int i=0;i<=n;++i) {
+		int X, Y;
+		cin >> X >> Y;
+		vec[X].push_back(Y);
+		vec[Y].push_back(X);
 	}
-	printf("n = %d\n", n);
-	//colocando a lista dentro do vetor
+
+	for(int i=0;i<n;++i) {
+		cout << i << " ";
+		for(int j=0;j<vec[i].size();++j) {
+			cout << vec[i][j] << " ";
+		}
+		cout << endl;
+	}
 	
 	return 0;
 }

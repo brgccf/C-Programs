@@ -1,47 +1,32 @@
 #include "bits/stdc++.h"
-#define ULL unsigned long long
-
-ULL aux_exp(int A, int B)
-{
-	ULL i, res = 1, v = A;
-	for(i = 0; (1<<i) < B; i++)
-	{
-		if(B & (1<<i))
-		{
-			res*=v;
-			res %= 100000;
-		}
-		//printf("A^%d mod 100000 = %d\n", (1<<i), v);
-		v *= v;
-		v %= 100000;
-	}
-	
-	printf("RES = %lld\n", res);
-	
-	return res;
-	
-}
+int m, n;
 
 int main(int argc, char const *argv[])
 {
-	int cases;
-	scanf("%d", &cases);
-	while(cases)
+	while(scanf("%d%d", &n, &m) != EOF)
 	{
-		ULL numb_cases;
-		scanf("%llu", &numb_cases);
-		ULL array[numb_cases];
-		int i;
-		for (i = 0; i < numb_cases; ++i)
+		int ar[n];
+		for(int i = 0 ; i < n; i++)
 		{
-			scanf("%llu", &array[i]);
-			printf("array[%d] == %llu\n", i, array[i]);
+			scanf("%d", &ar[i]);
 		}
-		
-		
-
-		
-		--cases;
+		int k, v;
+		for(m; m > 0; m--)
+		{
+			int count = 0;
+			scanf("%d%d", &k, &v);
+			for (int i = 0; i < n; ++i)
+			{
+				if(k && (ar[i]==v))
+				{
+					count = i;
+					--k;
+				}
+				else if(!k) break;
+			}
+			if(k) printf("0\n");
+			else printf("%d\n", count+1);
+		}
 	}
 	return 0;
 }
