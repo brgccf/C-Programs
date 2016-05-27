@@ -7,7 +7,7 @@ using namespace std;
 typedef struct node
 {
 	int key;
-	bool visited = false;
+	bool visited;
 }node;
 
 vector< vector<node> > vec; //lista de adjacencia
@@ -27,13 +27,16 @@ void DFS(node no, node parent)
 		}
 		else //se w esta marcado
 		{
-			if (w != parent(no))
+			if (w.key != parent.key) //se nao for o pai
 			{
+				printf("RETORNOU\n");
 				return; //aresta de retorno
 			}
 			else 
 			{
+				printf("CRUZAMENTO\n");
 				//aresta de cruzamento
+				continue;
 			}
 		}
 	}
@@ -51,7 +54,9 @@ int main(int argc, char const *argv[])
 		cin >> X >> Y;
 		node a, b;
 		a.key = X;
+		a.visited = false;
 		b.key = Y;
+		b.visited = false;
 		vec[X].push_back(b); 
 		vec[Y].push_back(a); //grafo bidirecionado
 	}
@@ -64,6 +69,11 @@ int main(int argc, char const *argv[])
 		}
 		cout << endl;
 	}
+
+	//DFS:
+	printf("DFS:\n");
+	//printf("%s\n", vec[1][0].visited ? "true" : "false");
+	DFS(vec[0][0], vec[0][0]);
 	
 	return 0;
 }
