@@ -56,9 +56,10 @@ using namespace std;
 
 vector<int> P;
 vector<int> custo_ruim;
-int contador_bom;
+int contador_bom = 0;
 
-pthread_mutex_t mutex_lock;
+pthread_mutex_t mutex_lock_bom;
+vector<pthread_mutex_t> mutex_lock_vec;
 
 void *calcula_custo_bom(*void param)
 {
@@ -72,6 +73,20 @@ void *calcula_custo_ruim(*void param)
 
 int main()
 {
+	int N, T, F; //N = num. arquivos, T = num. threads, F = tipos de flechas
+	scanf("%d%d%d", &T, &N, &F); //leitura de parametros
+	P.resize(F); //definindo P com o total de tipos de flechas.
+	custo_ruim.resize(F); //definindo custo_ruim com F tipos de flechas
+	mutex_lock_vec.resize(F); //definindo mutex para cada posicao do vetor
+	pthread_t calc_ruim, calc_bom; //threads para cada calculo
+
+
+	while(N--) //enquanto houver arquivos para serem lidos
+	{
+		int f, q; //f = tipo de flecha (até F-1), q = qtde do tipo de flecha
+		scanf("%d%d", &f, &q);
+	}
 	
+
 	return 0;
 }

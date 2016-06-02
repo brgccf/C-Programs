@@ -1,5 +1,5 @@
 #include <iostream>
- #include <pthread.h>
+#include <pthread.h>
 
 using namespace std;
 // #define THREADS_MAX     4
