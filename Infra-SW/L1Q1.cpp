@@ -23,7 +23,8 @@ ATENÇÂO: deve-se garantir a exclusão mútua ao alterar o vetor que guardará 
 do conserto de cada flecha. Porém, você deverá assumir uma implementação refinada.
 Uma implementação refinada garante a exclusão mútua separada para cada posição do
 vetor. Mais especificamente, enquanto um preço está sendo contabilizado para um tipo
-de flecha x e modificando o vetor na respectiva posição, uma outra thread podemodificar o vetor em uma posição y que representa outra flecha.
+de flecha x e modificando o vetor na respectiva posição, uma outra thread podemodificar o vetor em 
+uma posição y que representa outra flecha.
 Ou seja, se o vetor de
 flechas possui tamanho 10, haverá um outro vetor de 10 mutex, um para cada posição
 do vetor de flechas. Ao ler um arquivo e detectar um conserto para a flecha y, a thread
