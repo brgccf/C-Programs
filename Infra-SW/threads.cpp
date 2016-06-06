@@ -67,10 +67,11 @@ int main(){
 //
 // ----GERAL
 // void *funct(void* PARAM);
-// pthread_t exemplo_t;  //declaraÃ§Ã£o bÃ¡sica
+// pthread_t exemplo_t;  //declaraçao basica
 // pthread_create(&exemplo_t, NULL, funct, (void*) &param);  //inicializa thread com funct
-// pthread_join(exemplo_t, NULL);  //trava o fluxo atÃ© o tÃ©rmino de exemplo_t
-// pthread_exit(NULL);    //encerra imediatamente (`break`) a thread que estÃ¡ chamando o mÃ©todo
+// pthread_join(exemplo_t, NULL);  //trava o fluxo ate o termino de exemplo_t
+// pthread_exit(NULL);    //encerra imediatamente (`break`) a thread que esta
+//chamando o metodo
 //
 // ----MUTEX
 // pthread_mutex_t exemplo_t;    //declaraÃ§Ã£o bÃ¡sica

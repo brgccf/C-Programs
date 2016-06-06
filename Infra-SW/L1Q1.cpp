@@ -23,7 +23,8 @@ ATENÇÂO: deve-se garantir a exclusão mútua ao alterar o vetor que guardará 
 do conserto de cada flecha. Porém, você deverá assumir uma implementação refinada.
 Uma implementação refinada garante a exclusão mútua separada para cada posição do
 vetor. Mais especificamente, enquanto um preço está sendo contabilizado para um tipo
-de flecha x e modificando o vetor na respectiva posição, uma outra thread podemodificar o vetor em 
+de flecha x e modificando o vetor na respectiva posição, uma outra thread podemodificar 
+o vetor em 
 uma posição y que representa outra flecha.
 Ou seja, se o vetor de
 flechas possui tamanho 10, haverá um outro vetor de 10 mutex, um para cada posição
@@ -59,16 +60,32 @@ vector<int> P;
 vector<int> custo_ruim;
 int contador_bom = 0;
 
+vector<pthread_t> threads;
 pthread_mutex_t mutex_lock_bom;
 vector<pthread_mutex_t> mutex_lock_vec;
 
-void *calcula_custo_bom(*void param)
+void *processa() //arg1 = f, arg2 = q
 {
+	int f, q; //f = tipo de flecha (até F-1), q = qtde do tipo de flecha
 
-}
-
-void *calcula_custo_ruim(*void param)
-{
+	if(scanf("%d%d", &f, &q) != 2)
+	{
+		contador_bom = 0;
+	}
+	if(q > 0)
+	{
+		pthread_mutex_lock(&mutex_lock_bom);
+		contador_bom += q;
+		pthread_mutex_unlock(&mutex_lock_bom);
+	}
+	else
+	{
+		int qb = q*-1;
+		//f eh a posicao do vetor P, q eh quanto devemos multiplicar
+		pthread_mutex_lock(&mutex_lock_vec[arg1]); //trava na posicao f
+		custo_ruim[f] = P[f] * qb; //resultado do custo sendo guardado na pos do vetor
+		pthread_mutex_unlock(&mutex_lock_vec[arg1]); //destrava na posicao f
+	}
 	
 }
 
@@ -76,16 +93,27 @@ int main()
 {
 	int N, T, F; //N = num. arquivos, T = num. threads, F = tipos de flechas
 	scanf("%d%d%d", &T, &N, &F); //leitura de parametros
-	P.resize(F); //definindo P com o total de tipos de flechas.
+	P.resize(F); //definindo P com o total de tipos de flechas. (preço de cada flecha)
 	custo_ruim.resize(F); //definindo custo_ruim com F tipos de flechas
 	mutex_lock_vec.resize(F); //definindo mutex para cada posicao do vetor
-	pthread_t calc_ruim, calc_bom; //threads para cada calculo
-
+	threads.resize(T); //threads com total estabelecido
+	pthread_mutex_init(&mutex_lock_bom, NULL); //inicializando mutex de contador bom
+	memset(P, 0, sizeof(P));
+	memset(custo_ruim, 0, sizeof(custo_ruim));
+	for (int i = 0; i < F; ++i)
+	{
+		pthread_mutex_init(&mutex_lock_vec[i], NULL); //inicializando vetor de mutexes
+	}
 
 	while(N--) //enquanto houver arquivos para serem lidos
 	{
-		int f, q; //f = tipo de flecha (até F-1), q = qtde do tipo de flecha
-		scanf("%d%d", &f, &q);
+		//fopen ... arquivo para leitura
+		//FILE *file;
+		//file = fopen(1.in, "r");
+		for (int i = 0; i < T; ++i)
+		{
+			pthread_create(threads[i], NULL, processa, NULL);
+		}
 	}
 	
 
