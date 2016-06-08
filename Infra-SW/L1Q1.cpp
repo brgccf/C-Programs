@@ -52,7 +52,8 @@ Custo de consertar as flechas de tipo 0: R$ 0,00
 Custo de consertar as flechas de tipo 1: R$ 6,00
 Custo de consertar as flechas de tipo 2: R$ 0,00
 */
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
 #include <pthread.h>
 using namespace std;
 
@@ -64,14 +65,10 @@ vector<pthread_t> threads;
 pthread_mutex_t mutex_lock_bom;
 vector<pthread_mutex_t> mutex_lock_vec;
 
-void *processa() //arg1 = f, arg2 = q
+void *processa(void* args) //arg1 = f, arg2 = q
 {
 	int f, q; //f = tipo de flecha (até F-1), q = qtde do tipo de flecha
 
-	if(scanf("%d%d", &f, &q) != 2)
-	{
-		contador_bom = 0;
-	}
 	if(q > 0)
 	{
 		pthread_mutex_lock(&mutex_lock_bom);
@@ -82,9 +79,9 @@ void *processa() //arg1 = f, arg2 = q
 	{
 		int qb = q*-1;
 		//f eh a posicao do vetor P, q eh quanto devemos multiplicar
-		pthread_mutex_lock(&mutex_lock_vec[arg1]); //trava na posicao f
+		pthread_mutex_lock(&mutex_lock_vec[f]); //trava na posicao f
 		custo_ruim[f] = P[f] * qb; //resultado do custo sendo guardado na pos do vetor
-		pthread_mutex_unlock(&mutex_lock_vec[arg1]); //destrava na posicao f
+		pthread_mutex_unlock(&mutex_lock_vec[f]); //destrava na posicao f
 	}
 	
 }
@@ -98,8 +95,6 @@ int main()
 	mutex_lock_vec.resize(F); //definindo mutex para cada posicao do vetor
 	threads.resize(T); //threads com total estabelecido
 	pthread_mutex_init(&mutex_lock_bom, NULL); //inicializando mutex de contador bom
-	memset(P, 0, sizeof(P));
-	memset(custo_ruim, 0, sizeof(custo_ruim));
 	for (int i = 0; i < F; ++i)
 	{
 		pthread_mutex_init(&mutex_lock_vec[i], NULL); //inicializando vetor de mutexes
@@ -107,12 +102,12 @@ int main()
 
 	while(N--) //enquanto houver arquivos para serem lidos
 	{
-		//fopen ... arquivo para leitura
+		//fopen ... arquivo para leitura (nao sei fazer leitura por demanda ainda)
 		//FILE *file;
 		//file = fopen(1.in, "r");
 		for (int i = 0; i < T; ++i)
 		{
-			pthread_create(threads[i], NULL, processa, NULL);
+			pthread_create(&threads[i], NULL, &processa, (void*)i);
 		}
 	}
 	
