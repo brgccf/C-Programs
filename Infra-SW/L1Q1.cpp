@@ -52,6 +52,7 @@ Custo de consertar as flechas de tipo 0: R$ 0,00
 Custo de consertar as flechas de tipo 1: R$ 6,00
 Custo de consertar as flechas de tipo 2: R$ 0,00
 */
+#include <stdio.h>
 #include <iostream>
 #include <vector>
 #include <pthread.h>
@@ -60,15 +61,16 @@ using namespace std;
 vector<int> P;
 vector<int> custo_ruim;
 int contador_bom = 0;
-
+int F;
 vector<pthread_t> threads;
 pthread_mutex_t mutex_lock_bom;
 vector<pthread_mutex_t> mutex_lock_vec;
 
 void *processa(void* args) //arg1 = f, arg2 = q
 {
+	int i = (long int) args;
 	int f, q; //f = tipo de flecha (até F-1), q = qtde do tipo de flecha
-
+	scanf("%d%d", &f, &q);
 	if(q > 0)
 	{
 		pthread_mutex_lock(&mutex_lock_bom);
@@ -83,12 +85,15 @@ void *processa(void* args) //arg1 = f, arg2 = q
 		custo_ruim[f] = P[f] * qb; //resultado do custo sendo guardado na pos do vetor
 		pthread_mutex_unlock(&mutex_lock_vec[f]); //destrava na posicao f
 	}
+
+	printf("%d flechas em bom estado!\n", contador_bom);
+
 	
 }
 
 int main()
 {
-	int N, T, F; //N = num. arquivos, T = num. threads, F = tipos de flechas
+	int N, T; //N = num. arquivos, T = num. threads, F = tipos de flechas
 	scanf("%d%d%d", &T, &N, &F); //leitura de parametros
 	P.resize(F); //definindo P com o total de tipos de flechas. (preço de cada flecha)
 	custo_ruim.resize(F); //definindo custo_ruim com F tipos de flechas
@@ -102,12 +107,10 @@ int main()
 
 	while(N--) //enquanto houver arquivos para serem lidos
 	{
-		//fopen ... arquivo para leitura (nao sei fazer leitura por demanda ainda)
-		//FILE *file;
-		//file = fopen(1.in, "r");
-		for (int i = 0; i < T; ++i)
+		
+		for (long int i = 0; i < T; ++i)
 		{
-			pthread_create(&threads[i], NULL, &processa, (void*)i);
+			pthread_create(&threads[i], NULL, processa, (void*)(long int) N);
 		}
 	}
 	
