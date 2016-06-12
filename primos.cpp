@@ -4,10 +4,10 @@
 #include <string.h>
 
 #define MAX 1000000
-#define __EASY_MODE__
+//#define __EASY_MODE__
 //#define __MEDIUM_MODE__
 //#define __HARD_MODE__
-//#define __VERY_HARD_MODE__
+#define __VERY_HARD_MODE__
 unsigned char eh_primo[MAX];
 
 #ifdef __EASY_MODE__
@@ -81,7 +81,7 @@ void prime_to_n(int n)
 
 int main() {
 	
-	int n = 1000000;
+	int n = 10;
 	
 	prime_to_n(n);
 	
