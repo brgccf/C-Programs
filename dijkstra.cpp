@@ -42,28 +42,32 @@ void print_state(int nver)
 	cout << endl;
 }
 
-void dijkstra(int nver)
+void dijkstra(int key)
 {
 	//fill
 	dist[0] = 0; //base
-	for (int i = 0; i < nver; i++) //experimenta botar +1 apos nver
+	pq.push(ii(dist[0], 1)); //1 eh a raiz
+	while(!pq.empty())
 	{
-		printf("GRAPH[%d] == %d\n", i, graph[i].size());
-		for (int j = 0; j < graph[i].size(); j++)
+		ii actual = pq.top();
+		printf("actual == %d\n", actual.second);
+		pq.pop(); //marca actual
+		for (int i = 0; i < graph[actual.second].size(); ++i)
 		{
-			ii adj = graph[i][j]; //vertice adjacente
-			int wei = adj.first; //custo de u -> v
-			int no = adj.second; //node sendo analisado
-			cout << "no = " << no << endl;
-			cout << "wei = " << wei << " " << dist[i] << endl;
-			if((dist[i] + wei) < dist[no-1]) 
+			ii adj = graph[actual.second][i];
+			if((dist[actual.second-1] + adj.first) < dist[adj.second-1])
 			{
-				//cout << "get inside if!" << endl;
-				dist[no-1] = dist[i] + wei; //atualiza distancia
+				
+				dist[adj.second-1] = dist[actual.second-1] + adj.first;
+				pq.push(ii(dist[adj.second-1], adj.second));
+				ant[adj.second-1] = actual.second;
 			}
+			printf("adj == %d\n", adj.second);
 		}
+		printf("\n");
+		print_state(4);
+		printf("\n");
 	}
-	print_state(nver);
 }
 
 int main(int argc, char const *argv[])
@@ -98,7 +102,7 @@ int main(int argc, char const *argv[])
 	}
 
 	fill(nvert);
-	dijkstra(nvert);
+	dijkstra(4);
 
 	return 0;
 }

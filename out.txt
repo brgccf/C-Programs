@@ -10,30 +10,41 @@ Graph read:
 4 -> 1 (9)
 4 -> 2 (5)
 4 -> 3 (8)
-GRAPH[0] == 0
-GRAPH[1] == 3
-no = 4
-wei = 9 10001001
-no = 2
-wei = 3 10001001
-no = 3
-wei = 1 10001001
-GRAPH[2] == 2
-no = 1
-wei = 3 10001001
-no = 4
-wei = 5 10001001
-GRAPH[3] == 2
-no = 1
-wei = 1 10001001
-no = 4
-wei = 8 10001001
-GRAPH[4] == 3
-no = 1
-wei = 9 1597856901
-no = 2
-wei = 5 1597856901
-no = 3
-wei = 8 1597856901
-distances: 0 10001001 10001001 10001001 
-antecessors: -1 10001001 10001001 10001001 
+actual == 1
+adj == 4
+adj == 2
+adj == 3
+
+distances: 0 3 1 9 
+antecessors: -1 1 1 1 
+
+actual == 3
+adj == 1
+adj == 4
+
+distances: 0 3 1 9 
+antecessors: -1 1 1 1 
+
+actual == 2
+adj == 1
+adj == 4
+
+distances: 0 3 1 8 
+antecessors: -1 1 1 2 
+
+actual == 4
+adj == 1
+adj == 2
+adj == 3
+
+distances: 0 3 1 8 
+antecessors: -1 1 1 2 
+
+actual == 4
+adj == 1
+adj == 2
+adj == 3
+
+distances: 0 3 1 8 
+antecessors: -1 1 1 2 
+
