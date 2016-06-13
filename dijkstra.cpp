@@ -18,6 +18,7 @@ priority_queue< ii, vector< ii >, greater< ii > > pq;
 inline void fill(int n) //n = nvert
 {
 	//definindo parametros iniciais
+	printf("GOT INSIDE FILL\n");
 	for (int i = 0; i < n; ++i)
 	{
 		dist[i] = INF;
@@ -41,8 +42,23 @@ void print_state(int nver)
 	}
 	cout << endl;
 }
-
-void dijkstra(int key)
+/*
+9 13
+1 2 3
+1 9 45
+2 3 2
+2 4 8
+2 5 5
+3 7 15
+4 5 1
+5 6 9
+6 7 10
+6 8 7
+7 8 5
+7 9 22
+8 9 12
+*/
+void dijkstra(int nver)
 {
 	//fill
 	dist[0] = 0; //base
@@ -57,7 +73,6 @@ void dijkstra(int key)
 			ii adj = graph[actual.second][i];
 			if((dist[actual.second-1] + adj.first) < dist[adj.second-1])
 			{
-				
 				dist[adj.second-1] = dist[actual.second-1] + adj.first;
 				pq.push(ii(dist[adj.second-1], adj.second));
 				ant[adj.second-1] = actual.second;
@@ -65,7 +80,7 @@ void dijkstra(int key)
 			printf("adj == %d\n", adj.second);
 		}
 		printf("\n");
-		print_state(4);
+		print_state(nver);
 		printf("\n");
 	}
 }
@@ -89,20 +104,20 @@ int main(int argc, char const *argv[])
 	}
 
 	//imprimindo resultado
-	cout << "Graph read: " << endl;
-	for (int i = 0; i < nares; ++i)
-	{
-		for (int j = 0; j < graph[i].size(); ++j)
-		{
-			ii p = graph[i][j];
-			int w = p.first;
-			int v = p.second;
-			printf("%d -> %d (%d)\n", i, v, w);
-		}
-	}
+	// cout << "Graph read: " << endl;
+	// for (int i = 0; i < nares; ++i)
+	// {
+	// 	for (int j = 0; j < graph[i].size(); ++j)
+	// 	{
+	// 		ii p = graph[i][j];
+	// 		int w = p.first;
+	// 		int v = p.second;
+	// 		printf("%d -> %d (%d)\n", i, v, w);
+	// 	}
+	// }
 
 	fill(nvert);
-	dijkstra(4);
+	dijkstra(nvert);
 
 	return 0;
 }
