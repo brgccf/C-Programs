@@ -1,96 +1,25 @@
-lendo arestas em formato u v peso
-GOT INSIDE FILL
-actual == 1
-adj == 2
-adj == 9
 
-distances: 0 3 10001001 10001001 10001001 10001001 10001001 10001001 45 
-antecessors: -1 1 10001001 10001001 10001001 10001001 10001001 10001001 1 
+distances: 0 15 12 10001001 10001001 
+antecessors: -1 1 1 10001001 10001001 
 
-actual == 2
-adj == 1
-adj == 3
-adj == 4
-adj == 5
 
-distances: 0 3 5 11 8 10001001 10001001 10001001 45 
-antecessors: -1 1 2 2 2 10001001 10001001 10001001 1 
+distances: 0 15 12 22 10001001 
+antecessors: -1 1 1 3 10001001 
 
-actual == 3
-adj == 2
-adj == 7
 
-distances: 0 3 5 11 8 10001001 20 10001001 45 
-antecessors: -1 1 2 2 2 10001001 3 10001001 1 
+distances: 0 15 12 22 20 
+antecessors: -1 1 1 3 2 
 
-actual == 5
-adj == 2
-adj == 4
-adj == 6
 
-distances: 0 3 5 9 8 17 20 10001001 45 
-antecessors: -1 1 2 5 2 5 3 10001001 1 
+distances: 0 15 12 22 20 
+antecessors: -1 1 1 3 2 
 
-actual == 4
-adj == 2
-adj == 5
 
-distances: 0 3 5 9 8 17 20 10001001 45 
-antecessors: -1 1 2 5 2 5 3 10001001 1 
+distances: 0 15 12 22 20 
+antecessors: -1 1 1 3 2 
 
-actual == 4
-adj == 2
-adj == 5
-
-distances: 0 3 5 9 8 17 20 10001001 45 
-antecessors: -1 1 2 5 2 5 3 10001001 1 
-
-actual == 6
-adj == 5
-adj == 7
-adj == 8
-
-distances: 0 3 5 9 8 17 20 24 45 
-antecessors: -1 1 2 5 2 5 3 6 1 
-
-actual == 7
-adj == 3
-adj == 6
-adj == 8
-adj == 9
-
-distances: 0 3 5 9 8 17 20 24 42 
-antecessors: -1 1 2 5 2 5 3 6 7 
-
-actual == 8
-adj == 6
-adj == 7
-adj == 9
-
-distances: 0 3 5 9 8 17 20 24 36 
-antecessors: -1 1 2 5 2 5 3 6 8 
-
-actual == 9
-adj == 1
-adj == 7
-adj == 8
-
-distances: 0 3 5 9 8 17 20 24 36 
-antecessors: -1 1 2 5 2 5 3 6 8 
-
-actual == 9
-adj == 1
-adj == 7
-adj == 8
-
-distances: 0 3 5 9 8 17 20 24 36 
-antecessors: -1 1 2 5 2 5 3 6 8 
-
-actual == 9
-adj == 1
-adj == 7
-adj == 8
-
-distances: 0 3 5 9 8 17 20 24 36 
-antecessors: -1 1 2 5 2 5 3 6 8 
-
+Teste 1
+1 2
+1 3
+3 4
+2 5
