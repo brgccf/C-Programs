@@ -4,47 +4,34 @@ UVa 11137 - Ingenuous Cube
 #include "bits/stdc++.h"
 using namespace std;
 
-// class tab
-// {
-// public:
-// 	int key;
-// 	bool belongs, exist;
-// 	tab();
-	
-// };
-
-// tab::tab()
-// {
-
-// }
-
-typedef struct tab
-{
-	int key;
-	bool belong, exist;
-}tab;
-
+typedef unsigned long long int b64;
+#define max 10000
+b64 tab[max];
 int main(int argc, char const *argv[])
 {
 
-	vector<int> vec(22);
+	vector<int> coi(22);
 	for (int i = 1; i < 22; ++i)
 	{
 		int calc = i*i*i;
-		vec[i] = calc; //linhas da tabela
-		printf("%d\n", vec[i]);
+		coi[i] = calc; //linhas da tabela
+		//printf("%d\n", vec[i]);
 	}
-
-	tab table[21][9262]; //max == 9261
-	table[0][0].key = 0;
-	for(int i = 0; i < 21; ++i) table[0][i].exist = false;
-	for (int i = 1; i < 21; ++i)
+	int read;
+	while(scanf("%d", &read) == 1)
 	{
-		for (int j = 0; j < 9262; ++j)
+		for (int i = 0; i < max; ++i) tab[i] = 0;
+		tab[0] = 1;
+		for (int i = 1; i < 22; ++i)
 		{
-
+			for (int j = coi[i]; j <= read; ++j)
+			{
+				tab[j] = tab[j] + tab[j-coi[i]];
+			}
 		}
+		printf("%llu\n", tab[read]);
 	}
-	printf("END\n");
+
+	//printf("END\n");
 	return 0;
 }

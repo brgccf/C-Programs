@@ -1,7 +1,4 @@
-#include <stdio.h>
-#include <string.h>
-
-
+#include <bits/stdc++.h>
 
 char ch[10000];
 int read_data()
@@ -13,13 +10,7 @@ int read_data()
 
 void process()
 {
-	/*char c = ch-7;
-	if(c > 3)printf("%c", c);
-	if(c == '.')
-	{
-		printf("\n");
-	}
-	*/
+	
 	int limit = strlen(ch);
 	int i;
 	for(i = 0; i < limit; i++)
@@ -28,13 +19,11 @@ void process()
 	}
 	printf("\n");
 	
-	
+	ch[0] = 0;
 }
 
 int main()
 {
-	freopen("in.txt", "r", stdin);
-	freopen("out.txt", "w", stdout);
 	while(read_data())
 	{
 		process();

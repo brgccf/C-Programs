@@ -1,25 +1,2 @@
-
-distances: 0 15 12 10001001 10001001 
-antecessors: -1 1 1 10001001 10001001 
-
-
-distances: 0 15 12 22 10001001 
-antecessors: -1 1 1 3 10001001 
-
-
-distances: 0 15 12 22 20 
-antecessors: -1 1 1 3 2 
-
-
-distances: 0 15 12 22 20 
-antecessors: -1 1 1 3 2 
-
-
-distances: 0 15 12 22 20 
-antecessors: -1 1 1 3 2 
-
-Teste 1
-1 2
-1 3
-3 4
-2 5
+7
+10
